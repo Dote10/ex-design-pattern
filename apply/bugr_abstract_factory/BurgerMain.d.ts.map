@@ -1,0 +1,1 @@
+{"version":3,"file":"BurgerMain.d.ts","sourceRoot":"","sources":["BurgerMain.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,MAAM,EAAE,MAAM,aAAa,CAAA;AAEzC,8BAAsB,UAAU;IAC9B,QAAQ,CAAC,qBAAqB,CAAC,MAAM,EAAE,MAAM,GAAG,UAAU;CAC3D;AAED,qBAAa,gBAAgB;IAC3B,qBAAqB,CAAC,MAAM,EAAE,MAAM,GAAG,gBAAgB;CAIxD"}

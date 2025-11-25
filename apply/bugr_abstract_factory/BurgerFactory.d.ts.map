@@ -1,0 +1,1 @@
+{"version":3,"file":"BurgerFactory.d.ts","sourceRoot":"","sources":["BurgerFactory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,YAAY,EAAa,MAAM,aAAa,CAAA;AAE7D,8BAAsB,aAAa;IACjC,QAAQ,CAAC,YAAY,IAAI,MAAM;CAChC;AAED,qBAAa,mBAAmB;IAC9B,WAAW,IAAI,YAAY;CAG5B;AAED,qBAAa,gBAAgB;IAC3B,WAAW,IAAI,YAAY;CAG5B"}
