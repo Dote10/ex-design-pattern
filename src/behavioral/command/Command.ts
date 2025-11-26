@@ -79,55 +79,6 @@ export class SaveCommnad implements Command {
   constructor(private grimpan: Grimpan) {}
 
   execute(): void {
-    switch (this.grimpan.imageType) {
-      case 'png': {
-        const a = document.createElement('a');
-        a.download = 'canvas.png';
-        //a.href = this.grimpan.canvas.toDataURL('image/png');
-        const dataURL = this.grimpan.canvas.toDataURL('image/png');
-        let url = dataURL.replace(
-          /^data:image\/png/,
-          'data:application/octet-stream',
-        );
-        a.href = url;
-        a.click();
-        break;
-      }
-      case 'jpg': {
-        const a = document.createElement('a');
-        a.download = 'canvas.jpg';
-        //a.href = this.grimpan.canvas.toDataURL('image/jpg');
-        const dataURL = this.grimpan.canvas.toDataURL('image/jpg');
-        let url = dataURL.replace(
-          /^data:image\/jpg/,
-          'data:application/octet-stream',
-        );
-        a.href = url;
-        a.click();
-        break;
-      }
-      case 'webp': {
-        const a = document.createElement('a');
-        a.download = 'canvas.webp';
-        //a.href = this.grimpan.canvas.toDataURL('image/webp');
-        const dataURL = this.grimpan.canvas.toDataURL('image/webp');
-        let url = dataURL.replace(
-          /^data:image\/webp/,
-          'data:application/octet-stream',
-        );
-        a.href = url;
-        a.click();
-        break;
-      }
-      case 'avif': {
-        break;
-      }
-      case 'gif': {
-        break;
-      }
-      case 'pdf': {
-        break;
-      }
-    }
+    this.grimpan.saveStrategy();
   }
 }

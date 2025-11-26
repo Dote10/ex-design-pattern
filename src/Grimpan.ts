@@ -32,7 +32,7 @@ export abstract class Grimpan {
   mode!: Mode;
   color: string;
   active: boolean;
-  imageType: string;
+  saveStrategy!: () => void;
 
   protected constructor(
     canvas: HTMLElement | null,
@@ -51,11 +51,69 @@ export abstract class Grimpan {
     this.history = factory.createGrimpanHistory(this);
     this.color = '#000';
     this.active = false;
-    this.imageType = 'png';
+    this.setSaveStrategy('png');
   }
 
-  setImageType(imageType: 'png' | 'jpg' | 'webp' | 'avif' | 'gif' | 'pdf') {
-    this.imageType = imageType;
+  setSaveStrategy(imageType: 'png' | 'jpg' | 'webp' | 'avif' | 'gif' | 'pdf') {
+    switch (imageType) {
+      case 'png': {
+        this.saveStrategy = () => {
+          const a = document.createElement('a');
+          a.download = 'canvas.png';
+          //a.href = this.grimpan.canvas.toDataURL('image/png');
+          const dataURL = this.canvas.toDataURL('image/png');
+          let url = dataURL.replace(
+            /^data:image\/png/,
+            'data:application/octet-stream',
+          );
+          a.href = url;
+          a.click();
+        };
+        break;
+      }
+      case 'jpg': {
+        this.saveStrategy = () => {
+          const a = document.createElement('a');
+          a.download = 'canvas.jpg';
+          //a.href = this.grimpan.canvas.toDataURL('image/jpg');
+          const dataURL = this.canvas.toDataURL('image/jpg');
+          let url = dataURL.replace(
+            /^data:image\/jpg/,
+            'data:application/octet-stream',
+          );
+          a.href = url;
+          a.click();
+        };
+        break;
+      }
+      case 'webp': {
+        this.saveStrategy = () => {
+          const a = document.createElement('a');
+          a.download = 'canvas.webp';
+          //a.href = this.grimpan.canvas.toDataURL('image/webp');
+          const dataURL = this.canvas.toDataURL('image/webp');
+          let url = dataURL.replace(
+            /^data:image\/webp/,
+            'data:application/octet-stream',
+          );
+          a.href = url;
+          a.click();
+        };
+        break;
+      }
+      case 'avif': {
+        this.saveStrategy = () => {};
+        break;
+      }
+      case 'gif': {
+        this.saveStrategy = () => {};
+        break;
+      }
+      case 'pdf': {
+        this.saveStrategy = () => {};
+        break;
+      }
+    }
   }
 
   setMode(mode: GrimpanMode) {
